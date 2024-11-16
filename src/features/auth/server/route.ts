@@ -6,7 +6,7 @@ import { deleteCookie, setCookie } from "hono/cookie";
 
 import { createAdminClient } from "@/lib/appwrite";
 
-import { loginSchema, registerSchema } from "@/features/schemas";
+import { loginSchema, registerSchema } from "@/features/auth/schemas";
 
 import { sessionMiddleware } from "@/lib/session-middleware";
 
