@@ -5,6 +5,7 @@ import { useRef } from "react";
 import Image from "next/image";
 import { ImageIcon } from "lucide-react";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { DottedSeparator } from "@/components/dotted-separator";
@@ -29,6 +30,7 @@ interface createWorkspaceProps {
 }
 
 export const CreateWorkspaceForm = ({ onCancel }: createWorkspaceProps) => {
+  const router = useRouter();
   const { mutate, isPending } = useCreateWorkspace();
 
   const inputRef = useRef<HTMLInputElement>(null);
@@ -49,9 +51,9 @@ export const CreateWorkspaceForm = ({ onCancel }: createWorkspaceProps) => {
     mutate(
       { form: finalValues },
       {
-        onSuccess: () => {
+        onSuccess: ({ data }) => {
           form.reset();
-          // TODO: Redirect to new workspace
+          router.push(`/workspaces/${data.$id}`);
         },
       }
     );
