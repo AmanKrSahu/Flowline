@@ -1,3 +1,5 @@
+"use client";
+
 import { useMedia } from "react-use";
 import { Dialog, DialogContent } from "./ui/dialog";
 import { Drawer, DrawerContent } from "./ui/drawer";
